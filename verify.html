@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,66 +9,26 @@
   <meta property="og:description" content="NetCredential makes digital certificates a breeze to build and deliver." />
   <meta property="og:site_name" content="NetCredential" />
   <title>NetCredential - Verify</title>
+
   <link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
-  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="assets/css/verify.css">
+
+  <!--bootstrap CSS-->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+  <!-- Font CSS -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://unpkg.com/feather-icons"></script>
-
-  <!-- <link rel="stylesheet" href="/assets/vendors/feather-font/css/iconfont.css"> -->
-  <link rel="stylesheet" href="/assets/css/home.css">
-
-  <style>
-    .fas {
-      padding: 20px;
-      width: 56px;
-      height: 56px;
-      border-radius: 5px;
-      text-align: center;
-      text-decoration: none;
-      /* margin: 5px 2px; */
-      cursor: pointer;
-    }
-
-    .fas:hover {
-      opacity: 0.7;
-    }
-
-    .btn:hover {
-      opacity: 0.7;
-    }
-
-    .fa-facebook {
-      background: #3B5998;
-      color: white;
-    }
-
-    .fa-twitter {
-      background: #55ACEE;
-      color: white;
-    }
-
-    .fa-envelope-o {
-      background: #dd4b39;
-      color: white;
-    }
-
-    .fa-linkedin {
-      background: #007bb5;
-      color: white;
-    }
-
-    .fa-whatsapp {
-      background: #02a601;
-      color: white;
-    }
-  </style>
-
 </head>
 
 <body>
-  <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="z-index: 1;background: transparent;">
-    <div class="container"><a class="navbar-brand" href="index.html" style="font-size:30px; font-weight: 600; color: #031a61; font-family: 'Montserrat';">NetCredential</a>
+  <nav class="navbar navbar-light navbar-expand-md navigation-clean-button custom-navbar">
+    <div class="container"><a class="navbar-brand" href="index.html">NetCredential</a>
     </div>
   </nav>
 
@@ -79,19 +38,19 @@
         <div id="adobe-dc-view" style="height: 450px;"></div>
       </div>
       <div class="col-md-4 pt-3">
-        <p style="margin-left:5px;">Share your success!</p>
-        <div style="display: flex;justify-content: space-between;margin: 5px;margin-right: 0px;">
-          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="facebook" data-hashtags="achievementunlocked"><i class="fa fas fa-facebook"></i></button>
-          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="twitter" data-hashtags="achievementunlocked"><i class="fa fas fa-twitter"></i></button>
-          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="linkedin" data-hashtags="achievementunlocked"><i class="fa fas fa-linkedin"></i></button>
-          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="email" data-hashtags="achievementunlocked"><i class="fa fas fa-envelope-o"></i></button>
-          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="whatsapp" data-hashtags="achievementunlocked" data-web><i class="fa fas fa-whatsapp"></i></button>
+        <p class="p1-container">Share your success!</p>
+        <div class="div-container">
+          <button class="sharer" data-sharer="facebook" data-hashtags="achievementunlocked"><i class="fa fas fa-facebook"></i></button>
+          <button class="sharer" data-sharer="twitter" data-hashtags="achievementunlocked"><i class="fa fas fa-twitter"></i></button>
+          <button class="sharer" data-sharer="linkedin" data-hashtags="achievementunlocked"><i class="fa fas fa-linkedin"></i></button>
+          <button class="sharer" data-sharer="email" data-hashtags="achievementunlocked"><i class="fa fas fa-envelope-o"></i></button>
+          <button class="sharer" data-sharer="whatsapp" data-hashtags="achievementunlocked" data-web><i class="fa fas fa-whatsapp"></i></button>
         </div>
-        <button class="btn mt-3 addtoprofile" style="margin:5px; background-color: #0077B5; color:white; padding-top: 0px; padding-bottom: 0px; line-height: 50px; width: 100%;"><i class="fa fa-linkedin"></i> Add to Profile</button>
-        <button class="btn btn-primary mt-3 downloadcredential" style="margin:5px; color: white; padding-top: 0px; padding-bottom: 0px; line-height: 50px; width: 100%;"><i class="fa fa-download"></i> Download Credential</button>
+        <button class="btn mt-3 addtoprofile" ><i class="fa fa-linkedin"></i> Add to Profile</button>
+        <button class="btn btn-primary mt-3 downloadcredential"><i class="fa fa-download"></i> Download Credential</button>
 
-        <p style="margin-left:5px; margin-bottom: 0px;" class="mt-5">Issuer</p>
-        <p style="font-weight: bold;color: black;font-size: 20px;margin-left:5px;" class="organization"></p>
+        <p class="mt-5 p2-container">Issuer</p>
+        <p class="organization p3-container"></p>
       </div>
     </div>
   </div>
@@ -103,14 +62,16 @@
     </footer>
   </div>
 
+
+  <!-- JavaScript -->
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> -->
   <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyCv_UsUIQS0fO0lnR--pRhZish2f0bR1eM",
@@ -148,7 +109,6 @@
           });
         });
       } else {
-        // doc.data() will be undefined in this case
         console.log("No such document!");
       }
     });
@@ -185,6 +145,6 @@
       });
     });
   </script>
-</body>
 
+</body>
 </html>
