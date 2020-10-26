@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>NetCredential - Dashboard</title>
+	<link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
+	<link rel="stylesheet" href="/assets/vendors/core/core.css">
+	<link rel="stylesheet" href="/assets/vendors/jquery-steps/jquery.steps.css">
+	<link rel="stylesheet" href="/assets/vendors/feather-font/css/iconfont.css">
+	<link rel="stylesheet" href="/assets/vendors/dropify/dist/dropify.min.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+	<style>
+		body::-webkit-scrollbar {
+			display: none;
+		}
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+
+		.content::-webkit-scrollbar {
+			display: none;
+		}
+
+		.content {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+	</style>
+</head>
+
+<body class="sidebar-light">
+
+	<div class="main-wrapper" style="display:none;">
+
+		<nav class="sidebar">
+			<div class="sidebar-header">
+				<a href="#" class="sidebar-brand">
+					NetCredential
+				</a>
+			</div>
+			<div class="sidebar-body">
+				<ul class="nav">
+					<li class="nav-item nav-category">Credentials</li>
+					<li class="nav-item">
+						<a href="dashboard.html" class="nav-link">
+							<i class="link-icon align-middle" data-feather="plus-square" style="margin-top: -2px;"></i>
+							<span class="link-title align-middle">Create Credentials</span>
+						</a>
+					</li>
+					<!-- <li class="nav-item">
+						<a href="dashboard.html" class="nav-link">
+							<i class="link-icon align-middle" data-feather="plus-square" style="margin-top: -2px;"></i>
+							<span class="link-title align-middle">Analytics</span>
+						</a>
+					</li>
+					<li class="nav-item nav-category">Settings</li>
+					<li class="nav-item">
+						<a href="dashboard-one.html" class="nav-link">
+							<i class="link-icon" data-feather="user" style="margin-top: -2px;"></i>
+							<span class="link-title">Profile</span>
+						</a>
+					</li>
+					<li class="nav-item nav-category">Help</li>
+					<li class="nav-item">
+						<a href="dashboard-one.html" class="nav-link">
+							<i class="link-icon" data-feather="send" style="margin-top: -2px;"></i>
+							<span class="link-title">Contact</span>
+						</a>
+					</li> -->
+				</ul>
+			</div>
+		</nav>
+
+		<div class="page-wrapper">
+
+			<div class="page-content" style="margin-top: 0px; padding-bottom: 0px;">
+
+				<div class="row" style="height: 100%">
+					<div class="col-md-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<div class="progress" style="display:none; position: relative; top: 45%;">
+									<div class="progress-bar" role="progressbar" style="width: 0%"></div>
+								</div>
+								<div class="wizard">
+									<h4 class="card-title">Create Credentials</h4>
+									<div id="wizard">
+										<h2>Upload Recipient's Data</h2>
+										<section class="w-100">
+											<table class="table table-borderless">
+												<tbody>
+													<tr>
+														<td class="pl-0">
+															<p class="align-middle">Upload a spreadsheet of your recipients' information</p>
+														</td>
+														<td class="pr-0 text-right"><a href="/assets/template.csv" type="button" class="btn btn-warning"> <i class="link-icon" data-feather="download" style="width: 16px; height: 16px; margin-top: -2px;"></i> Download Template</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<input type="file" id="datasheet" class="border" data-allowed-file-extensions="csv" class="required" />
+										</section>
+
+										<h2>Review Data</h2>
+										<section class="w-100">
+											<div id="parsed_csv_list"></div>
+										</section>
+
+										<h2>Upload Design Template</h2>
+										<section class="w-100">
+											<table class="table table-borderless">
+												<tbody>
+													<tr>
+														<td class="pl-0">
+															<p class="align-middle">Upload the credential design template</p>
+														</td>
+														<td class="pr-0 text-right"><button type="button" class="btn btn-warning" disabled> <i class="link-icon" data-feather="arrow-up-right" style="width: 16px; height: 16px; margin-top: -2px;"></i> Create Template </button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<input type="file" id="designtemplate" class="border" data-allowed-file-extensions="html" />
+										</section>
+
+										<h2>Confirmation</h2>
+										<section>
+											<h4>It's as simple as that!</h4>
+											<p>Click <strong>Send</strong> to start the process.</p>
+										</section>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+				<p class="text-muted text-center text-md-left">NetCredential © 2020</p>
+				<p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted with <i class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i>&nbsp; in &nbsp;<span class="flag-icon flag-icon-in"></span></p>
+			</footer>
+
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="/assets/vendors/core/core.js"></script>
+	<script src="/assets/js/template.js"></script>
+	<script src="/assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+	<script src="/assets/vendors/dropify/dist/dropify.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+	<script src="/assets/js/papaparse.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+
+	<script>
+		$(function() {
+			'use strict';
+
+			var datasheet;
+
+			var firebaseConfig = {
+				apiKey: "AIzaSyCv_UsUIQS0fO0lnR--pRhZish2f0bR1eM",
+				authDomain: "netcredential.firebaseapp.com",
+				databaseURL: "https://netcredential.firebaseio.com",
+				projectId: "netcredential",
+				storageBucket: "netcredential.appspot.com",
+				messagingSenderId: "931548393787",
+				appId: "1:931548393787:web:9292befa0f9f5c6ab4c71e",
+				measurementId: "G-PN3JJ7DZH4"
+			};
+
+			firebase.initializeApp(firebaseConfig);
+			firebase.analytics();
+			var db = firebase.firestore();
+			var storage = firebase.storage();
+
+			firebase.auth().onAuthStateChanged(function(user) {
+				if (user) {
+					$(".wizard").show();
+					$(".progress").hide();
+
+					$(".main-wrapper").show();
+
+					$("#wizard").steps({
+						headerTag: "h2",
+						bodyTag: "section",
+						transitionEffect: "slideLeft",
+						labels: {
+							finish: "Send"
+						},
+						onStepChanged: function(event, currentIndex) {
+							if (currentIndex == 1) {
+								$("#datasheet").parse({
+									config: {
+										skipEmptyLines: true,
+										complete: function(results, file) {
+											var table = "<table class='table'>";
+											datasheet = results.data;
+											for (var i = 0; i < datasheet.length; i++) {
+												table += "<tr>";
+												var row = datasheet[i];
+												var cells = row.join(",").split(",");
+												for (var j = 0; j < cells.length; j++) {
+													table += "<td>";
+													table += cells[j];
+													table += "</th>";
+												}
+												table += "</tr>";
+											}
+											table += "</table>";
+											$("#parsed_csv_list").html(table);
+										}
+									}
+								});
+							}
+						},
+						onFinished: function(event, currentIndex) {
+							$('.wizard').hide();
+							$('.progress').show();
+							var company = firebase.auth().currentUser.uid;
+							var companyname = firebase.auth().currentUser.displayName;
+							db.collection("Groups").add({
+								company: company,
+								status: 'Created'
+							}).then(function(docRef) {
+								$('.progress-bar').css('width', '10' + '%');
+								$('.progress-bar').text(parseInt('10') + '%');
+								var storageRef = firebase.storage().ref(docRef.id + '.html');
+								storageRef.put($('#designtemplate').prop('files')[0]).then(function(snapshot) {
+									$('.progress-bar').css('width', '50' + '%');
+									$('.progress-bar').text(parseInt('50') + '%');
+									snapshot.ref.getDownloadURL().then(function(downloadURL) {
+										db.collection('Groups').doc(docRef.id).set({
+											template: downloadURL,
+											status: 'Design Uploaded'
+										}, {
+											merge: true
+										}).then(function() {
+											$('.progress-bar').css('width', '70' + '%');
+											$('.progress-bar').text(parseInt('70') + '%');
+											$.post("https://us-central1-netcredential.cloudfunctions.net/processcredentials", {
+												"companyuid": company,
+												"companyname": companyname,
+												"group": docRef.id,
+												"datasheet": JSON.stringify(datasheet)
+											}).done(function() {
+												db.collection('Groups').doc(docRef.id).set({
+													timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+													status: 'Done'
+												}, {
+													merge: true
+												}).then(function() {
+													$('.progress-bar').css('width', '100' + '%');
+													$('.progress-bar').text(parseInt('100') + '%');
+												});
+											});
+										});
+									});
+								});
+							}).catch(function(error) {
+								console.error(error);
+							});
+						}
+					});
+
+					$('#datasheet').dropify();
+					$('#designtemplate').dropify();
+				} else {
+					window.location.href = "/";
+				}
+			});
+
+		});
+	</script>
+</body>
+
+</html>

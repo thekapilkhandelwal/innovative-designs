@@ -1,0 +1,190 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:title" content="NetCredential - A comprehensive digital credential service" />
+  <meta property="og:url" content="https://netcredential.com" />
+  <meta property="og:image" content="https://netcredential.com/assets/images/certificate.png" />
+  <meta property="og:description" content="NetCredential makes digital certificates a breeze to build and deliver." />
+  <meta property="og:site_name" content="NetCredential" />
+  <title>NetCredential - Verify</title>
+  <link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- <link rel="stylesheet" href="/assets/vendors/feather-font/css/iconfont.css"> -->
+  <link rel="stylesheet" href="/assets/css/home.css">
+
+  <style>
+    .fas {
+      padding: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      /* margin: 5px 2px; */
+      cursor: pointer;
+    }
+
+    .fas:hover {
+      opacity: 0.7;
+    }
+
+    .btn:hover {
+      opacity: 0.7;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .fa-envelope-o {
+      background: #dd4b39;
+      color: white;
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+
+    .fa-whatsapp {
+      background: #02a601;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="z-index: 1;background: transparent;">
+    <div class="container"><a class="navbar-brand" href="index.html" style="font-size:30px; font-weight: 600; color: #031a61; font-family: 'Montserrat';">NetCredential</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="adobe-dc-view" style="height: 450px;"></div>
+      </div>
+      <div class="col-md-4 pt-3">
+        <p style="margin-left:5px;">Share your success!</p>
+        <div style="display: flex;justify-content: space-between;margin: 5px;margin-right: 0px;">
+          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="facebook" data-hashtags="achievementunlocked"><i class="fa fas fa-facebook"></i></button>
+          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="twitter" data-hashtags="achievementunlocked"><i class="fa fas fa-twitter"></i></button>
+          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="linkedin" data-hashtags="achievementunlocked"><i class="fa fas fa-linkedin"></i></button>
+          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="email" data-hashtags="achievementunlocked"><i class="fa fas fa-envelope-o"></i></button>
+          <button class="sharer" style="border: 0px; background: none; outline: none;" data-sharer="whatsapp" data-hashtags="achievementunlocked" data-web><i class="fa fas fa-whatsapp"></i></button>
+        </div>
+        <button class="btn mt-3 addtoprofile" style="margin:5px; background-color: #0077B5; color:white; padding-top: 0px; padding-bottom: 0px; line-height: 50px; width: 100%;"><i class="fa fa-linkedin"></i> Add to Profile</button>
+        <button class="btn btn-primary mt-3 downloadcredential" style="margin:5px; color: white; padding-top: 0px; padding-bottom: 0px; line-height: 50px; width: 100%;"><i class="fa fa-download"></i> Download Credential</button>
+
+        <p style="margin-left:5px; margin-bottom: 0px;" class="mt-5">Issuer</p>
+        <p style="font-weight: bold;color: black;font-size: 20px;margin-left:5px;" class="organization"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-basic">
+    <footer>
+      <p class="copyright">NetCredential © 2020</p>
+      <p class="copyright">Made in India | Made for the World</p>
+    </footer>
+  </div>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCv_UsUIQS0fO0lnR--pRhZish2f0bR1eM",
+      authDomain: "netcredential.firebaseapp.com",
+      databaseURL: "https://netcredential.firebaseio.com",
+      projectId: "netcredential",
+      storageBucket: "netcredential.appspot.com",
+      messagingSenderId: "931548393787",
+      appId: "1:931548393787:web:9292befa0f9f5c6ab4c71e",
+      measurementId: "G-PN3JJ7DZH4"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var db = firebase.firestore();
+
+    const credid = window.location.pathname.replace("/verify/", "");
+    var group;
+    var organization;
+
+    db.collection("Credentials").doc(credid).get().then(function(doc) {
+      if (doc.exists) {
+        db.collection("Groups").doc(doc.data()["Group"]).get().then(function(groupdocument) {
+          group = groupdocument.data()["name"];
+          db.collection("Organizations").doc(doc.data()["Company"]).get().then(function(doc) {
+            organization = doc.data()["name"];
+            $(".sharer").attr("data-title", `${group} - ${organization} (Powered by @netcredential)`);
+            $(".sharer").attr("data-url", `https://netcredential.com/verify/${credid}`);
+            window.Sharer.init();
+            if (doc.data()["verified"] == true) {
+              $(".organization").html(`${doc.data()["name"]} <img src="/assets/images/checked.svg" width="20">`);
+            } else {
+              $(".organization").html(`${doc.data()["name"]}`);
+            }
+          });
+        });
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    });
+
+    $(".addtoprofile").click(function() {
+      window.open(`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${group}&organizationName=${organization}&issueYear
+=&issueMonth=&expirationYear=&expirationMonth=&certUrl=https://netcredential.com/verify/${credid}&certId=${credid}`, "_blank");
+    });
+
+    $(".downloadcredential").click(function() {
+      window.open("https://netcredential.com/credential/" + credid, "_blank");
+    });
+
+    document.addEventListener("adobe_dc_view_sdk.ready", function() {
+      var adobeDCView = new AdobeDC.View({
+        clientId: "8203e8e9d30f4577aa27bd373e5ea33c",
+        divId: "adobe-dc-view"
+      });
+      adobeDCView.previewFile({
+        content: {
+          location: {
+            url: "https://netcredential.com/credential/" + credid
+          }
+        },
+        metaData: {
+          fileName: "Credential.pdf"
+        }
+      }, {
+        embedMode: "IN_LINE",
+        showPageControls: false,
+        showDownloadPDF: true,
+        showPrintPDF: false,
+        showFullScreen: true
+      });
+    });
+  </script>
+</body>
+
+</html>
